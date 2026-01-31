@@ -208,7 +208,7 @@ async def mine(interaction: discord.Interaction):
     gear_display = "\n".join([f"{k}: {v}" for k, v in user_data['gear'].items()]) if user_data['gear'] else "no gear equipped"
     
     sessionEmbed = Embed(
-        title="⛏️ you began a mining session!",
+        title="you began a mining session!",
         color=0x737270,
     )
     sessionEmbed.add_field(name="current gear:", value=gear_display, inline=False)
