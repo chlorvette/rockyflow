@@ -27,6 +27,28 @@ def get_highest_gear(inventory: dict) -> str:
         if pickaxe in inventory:
             return pickaxe
 
+def pprint_inventory(inventory: dict) -> str:
+    inventory_display = ""
+    for k in inventory.keys():
+        if k in items.keys() and inventory[k] > 0:
+            inventory_display += f"{items[k]['emoji']} x{human_format(inventory[k])} {k.replace('_', ' ')}\n"
+    
+    inventory_display = inventory_display if inventory_display else "empty"
+
+    return inventory_display
+
+# Source - https://stackoverflow.com/a/45846841
+# Posted by rtaft
+# Retrieved 2026-02-01, License - CC BY-SA 3.0
+
+def human_format(num):
+    num = float('{:.3g}'.format(num))
+    magnitude = 0
+    while abs(num) >= 1000:
+        magnitude += 1
+        num /= 1000.0
+    return '{}{}'.format('{:f}'.format(num).rstrip('0').rstrip('.'), ['', 'K', 'M', 'B', 'T'][magnitude])
+
 class RockyflowBot(commands.Bot):
     user: discord.ClientUser
     db: aiosqlite.Connection
@@ -131,7 +153,7 @@ class ShopSelect(ui.Select):
             
             options.append(discord.SelectOption(
                 label=item_key.replace("_", " "),
-                description=f"{gear[item_key]['price']} coins",
+                description=f"{human_format(gear[item_key]['price'])} coins",
                 value=item_key,
                 emoji=gear[item_key]['emoji']
             ))
@@ -157,7 +179,7 @@ class ShopSelect(ui.Select):
         
         if user_data['coins'] < item_price:
             await interaction.response.send_message(
-                f"you don't have enough coins! {item_name} costs {COINS_EMOJI} {item_price} coins, but you only have {COINS_EMOJI} {user_data['coins']} coins.", 
+                f"you don't have enough coins! {item_name} costs {COINS_EMOJI} {human_format(item_price)} coins, but you only have {COINS_EMOJI} {human_format(user_data['coins'])} coins.", 
                 ephemeral=True
             )
             return
@@ -179,7 +201,7 @@ class ShopSelect(ui.Select):
         purchaseEmbed = Embed(
             title="purchase successful!",
             color=0x00FF00,
-            description=f"you purchased {gear[selected_item_key]['emoji']} **{item_name}**!\n\n{COINS_EMOJI} **- {item_price}** coins\n**balance:** {COINS_EMOJI} {new_balance} coins"
+            description=f"you purchased {gear[selected_item_key]['emoji']} **{item_name}**!\n\n{COINS_EMOJI} **- {human_format(item_price)}** coins\n**balance:** {COINS_EMOJI} {human_format(new_balance)} coins"
         )
         purchaseEmbed.set_footer(text=str(interaction.user))
         await interaction.response.send_message(embed=purchaseEmbed, ephemeral=True)
@@ -206,12 +228,12 @@ async def send_stats_embed(interaction: discord.Interaction, bot: RockyflowBot):
         title="your stats",
         color=0x737270,
     )
-    statsEmbed.add_field(name="balance:", value=f"{COINS_EMOJI} {user_data['coins']} coins", inline=False)
-    statsEmbed.add_field(name="experience:", value=f"{XP_EMOJI} {user_data['xp']} xp", inline=False)
+    statsEmbed.add_field(name="balance:", value=f"{COINS_EMOJI} {human_format(user_data['coins'])} coins", inline=False)
+    statsEmbed.add_field(name="experience:", value=f"{XP_EMOJI} {human_format(user_data['xp'])} xp", inline=False)
     
-    inventory_display = "\n".join([f"{k}: {v}" for k, v in inventory.items()]) if inventory else "empty"
+    inventory_display = pprint_inventory(inventory)
     statsEmbed.add_field(name="inventory:", value=inventory_display, inline=False)
-    statsEmbed.add_field(name="current mine:", value=user_data['current_mine'], inline=False)
+    statsEmbed.add_field(name="current mine:", value=user_data['current_mine'].replace('_', ' '), inline=False)
     
     gear_display = get_highest_gear(user_data['inventory']).replace('_', ' ') if get_highest_gear(user_data['inventory']) else "no gear equipped"
     statsEmbed.add_field(name="gear:", value=gear_display, inline=False)
@@ -235,7 +257,7 @@ async def send_shop_embed(interaction: discord.Interaction, bot: RockyflowBot, e
     for item_key in gear.keys():
         if user_data['inventory'].get(item_key, 0) == 1:
             continue
-        value += f"**{gear[item_key]['emoji']} {item_key.replace('_', ' ')}** - {COINS_EMOJI} {gear[item_key]['price']} coins\n"
+        value += f"**{gear[item_key]['emoji']} {item_key.replace('_', ' ')}** - {COINS_EMOJI} {human_format(gear[item_key]['price'])} coins\n"
 
     shopEmbed.add_field(name="available items:", value=value, inline=False)
     await interaction.response.send_message(embed=shopEmbed, view=ShopView(user_data), ephemeral=ephemeral)
@@ -285,9 +307,9 @@ async def end_mining_session(interaction: discord.Interaction, bot: RockyflowBot
     
     description = f"**session duration:** {elapsed_seconds / 60:.1f} minutes\n**rewards:**\n"
     for ore, amount in earnings.items():
-        description += f"{items[ore]['emoji']} x{amount} {ore}\n"
+        description += f"{items[ore]['emoji']} x{human_format(amount)} {ore}\n"
 
-    description += f"{XP_EMOJI} +{xpEarnings} xp"
+    description += f"{XP_EMOJI} +{human_format(xpEarnings)} xp"
 
     resultsEmbed = Embed(
         title="mining session ended!",
@@ -353,8 +375,8 @@ class SellSelect(ui.Select):
                 amount = inventory[item_key]
                 sell_price = items[item_key]['sell_price']
                 options.append(discord.SelectOption(
-                    label=f"{item_key.replace('_', ' ')} x{amount}",
-                    description=f"{sell_price} coins each ({amount * sell_price} total)",
+                    label=f"{item_key.replace('_', ' ')} x{human_format(amount)}",
+                    description=f"{human_format(sell_price)} coins each ({human_format(amount * sell_price)} total)",
                     value=item_key,
                     emoji=items[item_key]['emoji']
                 ))
@@ -375,7 +397,7 @@ class SellSelect(ui.Select):
                 sell_price = items[item_key]['sell_price']
                 total_price = amount * sell_price
                 coins_gained += total_price
-                sold_items.append(f"{items[item_key]['emoji']} x{amount} {item_key.replace('_', ' ')} for {total_price} coins")
+                sold_items.append(f"{items[item_key]['emoji']} x{human_format(amount)} {item_key.replace('_', ' ')} for {human_format(total_price)} coins")
                 inventory[item_key] = 0
         
         await bot.update_user_data(
@@ -385,7 +407,7 @@ class SellSelect(ui.Select):
         )
         
         description = "\n".join(sold_items)
-        description += f"\n\n**earned:** {COINS_EMOJI} {coins_gained} coins\n**balance:** {COINS_EMOJI} {user_data['coins'] + coins_gained} coins"
+        description += f"\n\n**earned:** {COINS_EMOJI} {human_format(coins_gained)} coins\n**balance:** {COINS_EMOJI} {human_format(user_data['coins'] + coins_gained)} coins"
         
         sellEmbed = Embed(
             title="items sold!",
@@ -426,7 +448,7 @@ async def mine(interaction: discord.Interaction):
     )
     sessionEmbed.add_field(name="current gear:", value=gear_display, inline=False)
     sessionEmbed.add_field(name="current mine:", value=user_data['current_mine'].replace('_', ' '), inline=False)
-    sessionEmbed.add_field(name="current balance:", value=f"{COINS_EMOJI} {user_data['coins']} coins\n{XP_EMOJI} {user_data['xp']} xp", inline=False)
+    sessionEmbed.add_field(name="current balance:", value=f"{COINS_EMOJI} {human_format(user_data['coins'])} coins\n{XP_EMOJI} {human_format(user_data['xp'])} xp", inline=False)
     sessionEmbed.set_footer(text=str(interaction.user))
     
     await interaction.response.send_message(embed=sessionEmbed, view=MiningView())
@@ -444,7 +466,8 @@ async def inventory_command(interaction: discord.Interaction):
         user_data = await bot.get_user_data(interaction.user.id)
 
     inventory = user_data['inventory']
-    inventory_display = "\n".join([f"{ores[k]['emoji']} x{v}" for k, v in inventory.items()]) if inventory else "empty"
+
+    inventory_display = pprint_inventory(inventory)
 
     inventory_embed = Embed(
         title="your inventory",
