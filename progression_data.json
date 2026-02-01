@@ -1,0 +1,361 @@
+{
+    "ores": {
+        "stone": {
+            "wooden_pickaxe": 1.5,
+            "stone_pickaxe": 0.75,
+            "copper_pickaxe": 0.6,
+            "iron_pickaxe": 0.5,
+            "diamond_pickaxe": 0.4,
+            "netherite_pickaxe": 0.35,
+            "drops": "cobblestone",
+            "xp": 1
+        },
+        "coal": {
+            "wooden_pickaxe": 2.25,
+            "stone_pickaxe": 1.15,
+            "copper_pickaxe": 0.9,
+            "iron_pickaxe": 0.75,
+            "diamond_pickaxe": 0.6,
+            "netherite_pickaxe": 0.5,
+            "drops": "coal",
+            "xp": 2
+        }, 
+        "copper_ore": {
+            "wooden_pickaxe": 0,
+            "stone_pickaxe": 2.5,
+            "copper_pickaxe": 1.15,
+            "iron_pickaxe": 0.9,
+            "diamond_pickaxe": 0.75,
+            "netherite_pickaxe": 0.6,
+            "drops": "raw_copper",
+            "xp": 2
+        },
+        "iron_ore": {
+            "wooden_pickaxe": 0,
+            "stone_pickaxe": 1.15,
+            "copper_pickaxe": 0.9,
+            "iron_pickaxe": 0.75,
+            "diamond_pickaxe": 0.6,
+            "netherite_pickaxe": 0.5,
+            "drops": "raw_iron",
+            "xp": 0
+        }, 
+        "gold_ore": {
+            "wooden_pickaxe": 0,
+            "stone_pickaxe": 0,
+            "copper_pickaxe": 0,
+            "iron_pickaxe": 0.75,
+            "diamond_pickaxe": 0.6,
+            "netherite_pickaxe": 0.5,
+            "drops": "raw_gold",
+            "xp": 0
+        },
+        "redstone_ore": {
+            "wooden_pickaxe": 0,
+            "stone_pickaxe": 0,
+            "copper_pickaxe": 0,
+            "iron_pickaxe": 0.75,
+            "diamond_pickaxe": 0.6,
+            "netherite_pickaxe": 0.5,
+            "drops": "redstone dust",
+            "xp": 5
+        },
+        "lapis_ore": {
+            "wooden_pickaxe": 0,
+            "stone_pickaxe": 1.15,
+            "copper_pickaxe": 0.9,
+            "iron_pickaxe": 0.75,
+            "diamond_pickaxe": 0.6,
+            "netherite_pickaxe": 0.5,
+            "drops": "lapis_lazuli",
+            "xp": 5
+        },
+        "diamond_ore": {
+            "wooden_pickaxe": 0,
+            "stone_pickaxe": 0,
+            "copper_pickaxe": 0,
+            "iron_pickaxe": 1.15,
+            "diamond_pickaxe": 0.75,
+            "netherite_pickaxe": 0.6,
+            "drops": "diamond",
+            "xp": 20
+        },
+        "deepslate": {
+            "wooden_pickaxe": 2.25,
+            "stone_pickaxe": 1.15,
+            "copper_pickaxe": 0.9,
+            "iron_pickaxe": 0.75,
+            "diamond_pickaxe": 0.6,
+            "netherite_pickaxe": 0.5,
+            "drops": "cobbled_deepslate",
+            "xp": 1
+        },
+        "deepslate_iron_ore": {
+            "wooden_pickaxe": 0,
+            "stone_pickaxe": 1.7,
+            "copper_pickaxe": 1.35,
+            "iron_pickaxe": 1.15,
+            "diamond_pickaxe": 0.85,
+            "netherite_pickaxe": 0.75,
+            "drops": "raw_iron",
+            "xp": 0
+        },
+        "deepslate_gold_ore": {
+            "wooden_pickaxe": 0,
+            "stone_pickaxe": 0,
+            "copper_pickaxe": 4.5,
+            "iron_pickaxe": 1.15,
+            "diamond_pickaxe": 0.85,
+            "netherite_pickaxe": 0.75,
+            "drops": "raw_gold",
+            "xp": 0
+        },
+        "deepslate_redstone_ore": {
+            "wooden_pickaxe": 0,
+            "stone_pickaxe": 0,
+            "copper_pickaxe": 4.5,
+            "iron_pickaxe": 1.15,
+            "diamond_pickaxe": 0.85,
+            "netherite_pickaxe": 0.75,
+            "drops": "redstone dust",
+            "xp": 5
+        },
+        "deepslate_lapis_ore": {
+            "wooden_pickaxe": 0,
+            "stone_pickaxe": 0,
+            "copper_pickaxe": 0,
+            "iron_pickaxe": 1.15,
+            "diamond_pickaxe": 0.85,
+            "netherite_pickaxe": 0.75,
+            "drops": "lapis_lazuli",
+            "xp": 5
+        },
+        "netherrack": {
+            "wooden_pickaxe": 0.3,
+            "stone_pickaxe": 0.15,
+            "copper_pickaxe": 0.15,
+            "iron_pickaxe": 0.1,
+            "diamond_pickaxe": 0.1,
+            "netherite_pickaxe": 0.1,
+            "drops": "netherrack",
+            "xp": 1
+        },
+        "blackstone": {
+            "wooden_pickaxe": 1.15,
+            "stone_pickaxe": 0.6,
+            "copper_pickaxe": 0.45,
+            "iron_pickaxe": 0.4,
+            "diamond_pickaxe": 0.3,
+            "netherite_pickaxe": 0.25,
+            "drops": "blackstone",
+            "xp": 1
+        },
+        "nether_gold_ore": {
+            "wooden_pickaxe": 2.25,
+            "stone_pickaxe": 1.15,
+            "copper_pickaxe": 0.9,
+            "iron_pickaxe": 0.75,
+            "diamond_pickaxe": 0.6,
+            "netherite_pickaxe": 0.5,
+            "drops": "gold_nugget",
+            "xp": 1
+        },
+        "nether_quartz_ore": {
+            "wooden_pickaxe": 2.25,
+            "stone_pickaxe": 1.15,
+            "copper_pickaxe": 0.9,
+            "iron_pickaxe": 0.75,
+            "diamond_pickaxe": 0.6,
+            "netherite_pickaxe": 0.5,
+            "drops": "quartz",
+            "xp": 3
+        },
+        "ancient_debris": {
+            "wooden_pickaxe": 0,
+            "stone_pickaxe": 0,
+            "copper_pickaxe": 0,
+            "iron_pickaxe": 0,
+            "diamond_pickaxe": 5.65,
+            "netherite_pickaxe": 5,
+            "drops": "ancient_debris",
+            "xp": 15
+        }
+    },
+    "gear": {
+        "wooden_pickaxe": {
+            "emoji": "<:wooden_pickaxe:1467307932483059920>", 
+            "price": 0
+        },
+        "stone_pickaxe": {
+            "emoji": "<:stone_pickaxe:1467307778937978944>", 
+            "price": 5000
+        },
+        "copper_pickaxe": {
+            "emoji": "<:copper_pickaxe:1467574138519421193>", 
+            "price": 15000
+        },
+        "iron_pickaxe": {
+            "emoji": "<:iron_pickaxe:1467308051592778002>", 
+            "price": 25000
+        },
+        "diamond_pickaxe": {
+            "emoji": "<:diamond_pickaxe:1467574462856826951>", 
+            "price": 100000
+        },
+        "netherite_pickaxe": {
+            "emoji": "<:netherite_pickaxe:1467574630985236644>", 
+            "price": 500000
+        }
+    },
+    "items": {
+        "cobblestone": {
+            "sell_price": 1,
+            "emoji": "<:cobblestone:1467611957027672136>"
+        },
+        "coal": {
+            "sell_price": 2,
+            "emoji": "<:coal:1466599886647590942>"
+        },
+        "raw_copper": {
+            "sell_price": 0,
+            "emoji": "<:raw_copper:1467611955295555704>"
+        },
+        "raw_iron": {
+            "sell_price": 0,
+            "emoji": "<:raw_iron:1466599885678579835>"
+        },
+        "raw_gold": {
+            "sell_price": 0,
+            "emoji": "<:raw_gold:1466599884340727808>"
+        },
+        "redstone dust": {
+            "sell_price": 5,
+            "emoji": "<:redstone_dust:1467611954255237142>"
+        },
+        "lapis_lazuli": {
+            "sell_price": 4,
+            "emoji": "<:lapis_lazuli:1467611952574869000>"
+        },
+        "diamond": {
+            "sell_price": 10,
+            "emoji": "<:diamond:1467611949234655272>"
+        },
+        "cobbled_deepslate": {
+            "sell_price": 1,
+            "emoji": "<:cobbled_deepslate:1467611947980554432>"
+        },
+        "netherrack": {
+            "sell_price": 1,
+            "emoji": "<:netherrack:1467611946424733830>"
+        },
+        "blackstone": {
+            "sell_price": 2,
+            "emoji": "<:blackstone:1467611945518760166>"
+        },
+        "ancient_debris": {
+            "sell_price": 0, 
+            "emoji": "<:ancient_debris:1467611958277832996>"
+        },
+        "copper_ingot": {
+            "sell_price": 3,
+            "emoji": "<:copper_ingot:1467611944340164722>"
+        },
+        "iron_ingot": {
+            "sell_price": 5,
+            "emoji": "<:iron_ingot:1467611943115423854>"
+        },
+        "gold_ingot": {
+            "sell_price": 5,
+            "emoji": "<:gold_ingot:1467611941689102366>"
+        },
+        "netherite_scrap": {
+            "sell_price": 0,
+            "emoji": "<:netherite_scrap:1467611940376543588>"
+        },
+        "gold_nugget": {
+            "sell_price": 0,
+            "emoji": "<:gold_nugget:1467611938967261386>"
+        },
+        "netherite_ingot": {
+            "sell_price": 30,
+            "emoji": "<:netherite_ingot:1467611937545392151>"
+        },
+        "quartz": {
+            "sell_price": 3,
+            "emoji": "<:quartz:1467611936857391246>"
+        }
+    },
+    "processing": {
+        "smelting": {
+            "fuel": {
+                "coal": 8
+            },
+            "items": {
+                "raw_copper": {
+                    "output": "copper_ingot",
+                    "xp": 0.5
+                },
+                "raw_iron": {
+                    "output": "iron_ingot",
+                    "xp": 1
+                },
+                "raw_gold": {
+                    "output": "gold_ingot",
+                    "xp": 1
+                },
+                "ancient_debris": {
+                    "output": "netherite_scrap",
+                    "xp": 5
+                }
+            }
+        }, 
+        "crafting": 
+        {
+            "gold_ingot": {
+                "items": {
+                    "gold_nugget": 9
+                }
+            },
+            "netherite_ingot": {
+                "items": {
+                    "gold_ingot": 4,
+                    "netherite_scrap": 4
+                }
+            }
+        }
+    },
+    "mines": {
+        "surface_cave": {
+            "ticket_price": 0,
+            "available_ores": {
+                "stone": 0.5,
+                "coal": 0.2,
+                "copper_ore": 0.15,
+                "iron_ore": 0.05,
+                "gold_ore": 0.025,
+                "redstone_ore": 0.025,
+                "lapis_ore": 0.025,
+                "diamond_ore": 0.025
+            }
+        },
+        "deepslate_cave": {
+            "ticket_price": 100,
+            "available_ores": {
+                "deepslate": 0.45,
+                "deepslate_iron_ore": 0.2,
+                "deepslate_gold_ore": 0.1,
+                "deepslate_redstone_ore": 0.1,
+                "deepslate_lapis_ore": 0.1,
+                "diamond_ore": 0.05
+            }
+        },
+        "nether": {
+            "ticket_price": 1500,
+            "available_ores": {
+                "netherrack": 0.7,
+                "blackstone": 0.25,
+                "ancient_debris": 0.05
+            }
+        }
+    }
+}
